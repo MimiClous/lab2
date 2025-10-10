@@ -19,10 +19,17 @@ int main(void){
 
       int size = m - n + 1;
       int numbers[size];
-
-      for (int i = 0; i < size; i++) {
-            numbers[i] = n + i;
+      if (n != 0){
+            for (int i = 0; i < size; i++) {
+                  numbers[i] = n + i;
+            }
       }
+      else{
+            for (int i = 1; i < size; i++) {
+                  numbers[i] = n + i;
+            }
+      }      
+
       for (int i = 0; i < size; i++) {
             int res = divs(numbers[i]);
             if (res == numbers[i]) {
