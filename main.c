@@ -1,53 +1,43 @@
 #include <stdio.h>
-
-
 int divs(int num);
+void PerfectNums(int current, int end);
 
-int main(void){
-      int n, m;
+int main(void) {
+    int n, m;
+    
+    printf("Enter numbers N and M (example '0 500')\n");
+    int v = scanf("%d %d", &n, &m);
+    
+    if (v != 2 || n < 0 || m < 0 || n > m) {
+        printf("Error: N and M must be natural numbers and N <= M\n");
+        return 1;
+    }
 
-
-
-      printf("Enter numbers N and M (example '0 500')\n");
-      int i_n = scanf(" %d %d", &n, &m);
-
-
-      if (i_n != 2 || m <= n ){
-            printf("Entered n and m must be numbers and natural\n");
-            return 1;
-      }
-
-      int size = m - n + 1;
-      int numbers[size];
-
-      for (int i = 0; i < size; i++) {
-            numbers[i] = n + i;
-      }
-      for (int i = 0; i < size; i++) {
-            int res = divs(numbers[i]);
-            if (res == numbers[i] && numbers[i] != 0) {
-                  printf("%d\n", numbers[i]);
-            }
-      } 
-      
-      
-      
+    printf("Perfect numbers in range [%d, %d]\n", n, m);
+    PerfectNums(n, m);
     
     return 0;
-      
 }
 
 int divs(int num){
     if (num <= 1) return 0;
     
     int sum_divs = 0;
-
-
     for (int i = 1; i <= num / 2; i++){
         if (num % i == 0){
             sum_divs += i;
         }
     }
-
     return sum_divs;
+}
+void PerfectNums(int current, int end) {
+    if (current > end) {
+        return;
+    }
+    
+    if (current > 0 && divs(current) == current) {
+        printf("%d\n", current);
+    }
+    
+    PerfectNums(current + 1, end);
 }
