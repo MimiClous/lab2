@@ -19,20 +19,13 @@ int main(void){
 
       int size = m - n + 1;
       int numbers[size];
-      if (n != 0){
-            for (int i = 0; i < size; i++) {
-                  numbers[i] = n + i;
-            }
-      }
-      else{
-            for (int i = 1; i < size; i++) {
-                  numbers[i] = n + i;
-            }
-      }      
 
       for (int i = 0; i < size; i++) {
+            numbers[i] = n + i;
+      }
+      for (int i = 0; i < size; i++) {
             int res = divs(numbers[i]);
-            if (res == numbers[i]) {
+            if (res == numbers[i] && numbers[i] != 0) {
                   printf("%d\n", numbers[i]);
             }
       } 
